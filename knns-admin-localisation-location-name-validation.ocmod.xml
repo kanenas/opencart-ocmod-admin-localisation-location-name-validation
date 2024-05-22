@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<modification>
+	<id><![CDATA[[OCMOD] Admin > System > Localisation > Location, change the name validation from 32 characters to 255. You also need to ALTER the field `name` of `oc_location` to varchar(255)]]></id>
+	<name><![CDATA[Admin > System > Localisation > Location, change the name validation from 32 characters to 255. You also need to ALTER the field `name` of `oc_location` to varchar(255))]]></name>
+	<code>knns-admin-localisation-location-name-validation</code>
+	<version>0.1.0</version>
+	<author><![CDATA[<font color="#7F458C"><b>kanenas.net (aka Nikolas Branis)</b></font> - nbran@kanenas.net]]></author>
+	<link>https://kanenas.net/</link>
+	<file path="admin/controller/localisation/location.php" error="log">
+		<operation error="skip">
+			<search><![CDATA[if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {]]></search>
+			<add position="replace"><![CDATA[		if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 255)) {]]></add>
+		</operation>
+	</file>
+</modification>
